@@ -1,8 +1,11 @@
 #!/bin/bash -e
 # test suite...
+
+. test/util.sh
+
 echo running test.sh
-echo "ENV:"
-env
+echo "Environment variables:"
+indent "$(env)"
 
 failures=''
 function run-test()

@@ -11,3 +11,9 @@ fail_test()
 	echo "FAIL: $@"
 	exit 1
 }
+
+indent() {
+	while IFS='' read -r line; do
+		echo -e "\\t${line}"
+	done < <(echo "$*")
+}
