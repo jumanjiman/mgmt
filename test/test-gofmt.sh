@@ -1,5 +1,10 @@
 #!/bin/bash
+set -eEu
+set -o pipefail
+
+################################################################################
 # original version of this script from kubernetes project, under ALv2 license
+################################################################################
 
 . test/util.sh
 
@@ -35,4 +40,3 @@ bad_files=$(find_files | xargs $GOFMT -l)
 if [[ -n "${bad_files}" ]]; then
 	fail_test "The following golang files are not properly formatted (goimports -l): ${bad_files}"
 fi
-echo 'PASS'

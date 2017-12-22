@@ -1,5 +1,10 @@
 #!/bin/bash
+set -eEu
+set -o pipefail
+
+################################################################################
 # check that go lint passes or doesn't get worse by some threshold
+################################################################################
 
 . test/util.sh
 
@@ -27,7 +32,7 @@ fi
 
 LINT=$(find . -maxdepth 3 -iname '*.go' -not -path './old/*' -not -path './tmp/*' -not -path './bindata/*' -exec golint {} \;)	# current golint output
 COUNT=$(echo -e "$LINT" | wc -l)	# number of golint problems in current branch
-[ "$LINT" = "" ] && echo PASS && exit	# everything is "perfect"
+[[ -z "$LINT" ]] && exit # everything is "perfect"
 echo "$LINT"	# display the issues
 
 T=$(mktemp --tmpdir -d tmp.X'X'X)	# add quotes to avoid matching three X's
@@ -69,4 +74,3 @@ if [ "$DELTA" -gt "$THRESHOLD" ]; then
 	echo "Maximum threshold is: $THRESHOLD %"
 	fail_test "golint - FAILED"
 fi
-echo 'PASS'

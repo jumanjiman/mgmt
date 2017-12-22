@@ -1,5 +1,10 @@
 #!/bin/bash
+set -eEu
+set -o pipefail
+
+################################################################################
 # check that headers are properly formatted
+################################################################################
 
 . test/util.sh
 
@@ -29,4 +34,3 @@ bad_files=$(
 if [[ -n "${bad_files}" ]]; then
 	fail_test "The following file headers are not properly formatted: ${bad_files}"
 fi
-echo 'PASS'

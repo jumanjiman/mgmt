@@ -1,5 +1,10 @@
 #!/bin/bash
+set -eEu
+set -o pipefail
+
+################################################################################
 # check that go vet passes
+################################################################################
 
 . test/util.sh
 
@@ -56,9 +61,7 @@ for file in $(find . -maxdepth 3 -type f -name '*.go' -not -path './old/*' -not 
 done
 
 if [[ -n "$failures" ]]; then
-	echo 'FAIL'
 	echo 'The following tests have failed:'
 	echo -e "$failures"
 	exit 1
 fi
-echo 'PASS'

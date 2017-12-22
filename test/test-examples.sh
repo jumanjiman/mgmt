@@ -1,5 +1,10 @@
 #!/bin/bash
+set -eEu
+set -o pipefail
+
+################################################################################
 # check that our examples still build, even if we don't run them here
+################################################################################
 
 . test/util.sh
 
@@ -35,9 +40,7 @@ cd ..
 rmdir "$tmpdir"	# cleanup
 
 if [[ -n "$failures" ]]; then
-	echo 'FAIL'
 	echo "The following tests (in: ${linkto}) have failed:"
 	echo -e "$failures"
 	exit 1
 fi
-echo 'PASS'

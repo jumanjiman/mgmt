@@ -1,14 +1,15 @@
 #!/bin/bash
+set -eEu
+set -o pipefail
+
+################################################################################
 # check for any bash files that aren't properly formatted
 # TODO: this is hardly exhaustive
+################################################################################
 
 . test/util.sh
 
 info "running $0"
-
-set -o errexit
-set -o nounset
-set -o pipefail
 
 ROOT=$(dirname "${BASH_SOURCE}")/..
 
@@ -30,4 +31,3 @@ bad_files=$(
 if [[ -n "${bad_files}" ]]; then
 	fail_test "The following bash files are not properly formatted: ${bad_files}"
 fi
-echo 'PASS'

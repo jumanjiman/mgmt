@@ -1,6 +1,11 @@
 #!/bin/bash
+set -eEu
+set -o pipefail
+
+################################################################################
 # check a bunch of linters with the gometalinter
 # TODO: run this from the test-golint.sh file instead to check for deltas
+################################################################################
 
 . test/util.sh
 
@@ -55,9 +60,7 @@ for dir in $(find . -maxdepth 5 -type d -not -path './old/*' -not -path './old' 
 done
 
 if [[ -n "$failures" ]]; then
-	echo 'FAIL'
 	echo 'The following tests have failed:'
 	echo -e "$failures"
 	exit 1
 fi
-echo 'PASS'

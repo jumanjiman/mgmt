@@ -46,9 +46,7 @@ fi
 run-test ./test/test-golint.sh	# test last, because this test is somewhat arbitrary
 
 if [[ -n "$failures" ]]; then
-	echo 'FAIL'
 	echo 'The following tests have failed:'
 	echo -e "$failures"
 	exit 1
 fi
-echo 'ALL PASSED'

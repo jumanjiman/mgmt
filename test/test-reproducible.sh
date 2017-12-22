@@ -1,10 +1,12 @@
 #!/bin/bash
+set -eEu
+set -o pipefail
+
+################################################################################
 # simple test for reproducibility, probably needs major improvements
+################################################################################
 
 info "running $0"
-
-set -o errexit
-set -o pipefail
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )"	# dir!
 cd "$DIR" >/dev/null	# work from main mgmt directory
@@ -33,9 +35,7 @@ make clean
 
 # display errors
 if [[ -n "${failures}" ]]; then
-	echo 'FAIL'
 	echo 'The following tests failed:'
 	echo "${failures}"
 	exit 1
 fi
-echo 'PASS'

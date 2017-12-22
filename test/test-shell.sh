@@ -1,6 +1,11 @@
 #!/bin/bash
+set -eEu
+set -o pipefail
+
+################################################################################
 # simple test harness for testing mgmt
 # NOTE: this will rm -rf /tmp/mgmt/
+################################################################################
 
 . test/util.sh
 
@@ -74,9 +79,7 @@ fi
 
 # display errors
 if [[ -n "${failures}" ]]; then
-	echo 'FAIL'
 	echo 'The following tests failed:'
 	echo "${failures}"
 	exit 1
 fi
-echo 'PASS'

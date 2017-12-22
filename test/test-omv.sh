@@ -1,5 +1,10 @@
 #!/bin/bash -i
+set -eEu
+set -o pipefail
+
+################################################################################
 # simple test harness for testing mgmt via omv
+################################################################################
 
 info "running $0"
 
@@ -21,7 +26,5 @@ done
 # return to original dir
 cd "$CWD" >/dev/null
 if [ ! $RET -eq 0 ]; then
-	echo 'FAIL'
 	exit $RET
 fi
-echo 'PASS'

@@ -1,8 +1,14 @@
 #!/bin/bash
+set -eEu
+set -o pipefail
+
+################################################################################
+# Run go tests.
+################################################################################
 
 . test/util.sh
 
-info "running $0 $1"
+info "running $0"
 
 failures=''
 function run-test()
@@ -24,9 +30,7 @@ for pkg in $(go list ./... | grep -v "^${base}/vendor/" | grep -v "^${base}/exam
 done
 
 if [[ -n "$failures" ]]; then
-	echo 'FAIL'
 	echo 'The following "go test" runs have failed:'
 	echo -e "$failures"
 	exit 1
 fi
-echo 'PASS'
