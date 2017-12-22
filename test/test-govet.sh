@@ -35,7 +35,7 @@ function token-coloncheck() {
 for dir in $(find . -maxdepth 5 -type d -not -path './old/*' -not -path './old' -not -path './tmp/*' -not -path './tmp' -not -path './.*' -not -path './vendor/*'); do
 	match="$dir/*.go"
 	#echo "match is: $match"
-	if ! ls $match &>/dev/null; then
+	if ! ls "$match" &>/dev/null; then
 		#echo "skipping: $match"
 		continue	# no *.go files found
 	fi

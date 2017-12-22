@@ -42,7 +42,7 @@ str="${left}${right}"
 _min=$((minimum-1))
 _max=$((maximum+1))
 reset	# clean up once...
-output $count	# call function
+output "$count"	# call function
 while true; do
 
 	read -n1 -r -s -p "CPUs count is: $count; ${str} Press +/- key to adjust." key

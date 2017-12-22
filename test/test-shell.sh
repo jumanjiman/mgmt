@@ -5,7 +5,7 @@
 . test/util.sh
 
 if [ "$1" == "--help" ] || [ "$1" == "-h" ]; then
-	echo -e "usage: ./"$(basename $0)" [[--help] | <test>]"
+	echo -e "usage: ./"$(basename "$0")" [[--help] | <test>]"
 	echo -e "where: <test> is empty to run all tests, or <file>.sh from shell/ dir"
 	exit 1
 fi
@@ -31,7 +31,7 @@ for i in $DIR/test/shell/*.sh; do
 	if [ "$1" != '' ]; then
 		[ "$ii" != "$1" ] && continue
 	fi
-	cd $DIR/test/shell/ >/dev/null	# shush the cd operation
+	cd "$DIR"/test/shell/ >/dev/null	# shush the cd operation
 	mkdir -p '/tmp/mgmt/'	# directory for mgmt to put files in
 	#echo "Running: $ii"
 	export MGMT_TMPDIR='/tmp/mgmt/'	# we can add to env like this

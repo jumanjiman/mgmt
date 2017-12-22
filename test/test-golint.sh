@@ -31,9 +31,9 @@ echo "$LINT"	# display the issues
 
 T=$(mktemp --tmpdir -d tmp.X'X'X)	# add quotes to avoid matching three X's
 [ "$T" = "" ] && fail_test "Could not create tmpdir"
-cd $T || fail_test "Could not change into tmpdir $T"
+cd "$T" || fail_test "Could not change into tmpdir $T"
 git clone --recursive "${ROOT}" 2>/dev/null	# make a copy
-cd "$(basename ${ROOT})" >/dev/null || fail_test "Could not determine basename for the repo root '$ROOT'"
+cd "$(basename "${ROOT}")" >/dev/null || fail_test "Could not determine basename for the repo root '$ROOT'"
 if [ "$HACK" != "" ]; then
 	# ensure master branch really exists when cloning from a branched repo!
 	git checkout master &>/dev/null && git checkout - &>/dev/null
@@ -47,7 +47,7 @@ while read -r line; do
 	sum="$add"
 	#del=$(echo "$line" | cut -f2)
 	#sum=$(expr $add - $del)
-	DIFF1=$(expr $DIFF1 + $sum)
+	DIFF1=$(expr $DIFF1 + "$sum")
 done <<< "$NUMSTAT1"	# three < is the secret to putting a variable into read
 
 git checkout "$PREVIOUS" &>/dev/null	# previous commit

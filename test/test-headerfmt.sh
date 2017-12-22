@@ -19,7 +19,7 @@ find_files() {
 
 bad_files=$(
 	for i in $(find_files); do
-		if ! diff -q <( head -n $COUNT "$i" ) <( head -n $COUNT "$FILE" ) &>/dev/null; then
+		if ! diff -q <( head -n "$COUNT" "$i" ) <( head -n "$COUNT" "$FILE" ) &>/dev/null; then
 			echo "$i"
 		fi
 	done

@@ -48,7 +48,7 @@ travis_regex='^\([a-z0-9]\(\(, \)\|[a-z0-9]\)\+[a-z0-9]: \)\+[A-Z0-9][^:]\+[^:.]
 
 test_commit_message() {
 	echo "Testing commit message $1"
-	if ! git log --format=%s $1 | head -n 1 | grep -q "$travis_regex"
+	if ! git log --format=%s "$1" | head -n 1 | grep -q "$travis_regex"
 	then
 		echo "FAIL: Commit message should match the following regex: '$travis_regex'"
 		echo
@@ -61,22 +61,22 @@ test_commit_message() {
 
 test_commit_message_common_bugs() {
 	echo "Testing commit message for common bugs $1"
-	if git log --format=%s $1 | head -n 1 | grep -q "^resource:"
+	if git log --format=%s "$1" | head -n 1 | grep -q "^resource:"
 	then
 		echo 'FAIL: Commit message starts with `resource:`, did you mean `resources:` ?'
 		exit 1
 	fi
-	if git log --format=%s $1 | head -n 1 | grep -q "^tests:"
+	if git log --format=%s "$1" | head -n 1 | grep -q "^tests:"
 	then
 		echo 'FAIL: Commit message starts with `tests:`, did you mean `test:` ?'
 		exit 1
 	fi
-	if git log --format=%s $1 | head -n 1 | grep -q "^doc:"
+	if git log --format=%s "$1" | head -n 1 | grep -q "^doc:"
 	then
 		echo 'FAIL: Commit message starts with `doc:`, did you mean `docs:` ?'
 		exit 1
 	fi
-	if git log --format=%s $1 | head -n 1 | grep -q "^example:"
+	if git log --format=%s "$1" | head -n 1 | grep -q "^example:"
 	then
 		echo 'FAIL: Commit message starts with `example:`, did you mean `examples:` ?'
 		exit 1
@@ -85,13 +85,13 @@ test_commit_message_common_bugs() {
 
 if [[ -n "$TRAVIS_PULL_REQUEST_SHA" ]]
 then
-	commits=$(git log --format=%H origin/${TRAVIS_BRANCH}..${TRAVIS_PULL_REQUEST_SHA})
+	commits=$(git log --format=%H origin/"${TRAVIS_BRANCH}".."${TRAVIS_PULL_REQUEST_SHA}")
 	[[ -n "$commits" ]]
 
 	for commit in $commits
 	do
-		test_commit_message $commit
-		test_commit_message_common_bugs $commit
+		test_commit_message "$commit"
+		test_commit_message_common_bugs "$commit"
 	done
 fi
 echo 'PASS'

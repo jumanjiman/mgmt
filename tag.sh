@@ -39,10 +39,10 @@ echo "Press ^C within 3s to abort."
 sleep 3s
 
 # Tag and push.
-echo "release: tag $t" | git tag --file=- --sign $t
+echo "release: tag $t" | git tag --file=- --sign "$t"
 echo "INFO: Version $t is now tagged."
 echo "INFO: Pushing $t to origin."
-git push origin $t
+git push origin "$t"
 
 # Be informative.
 GIT_PAGER=cat git diff --stat "$v" "$t"

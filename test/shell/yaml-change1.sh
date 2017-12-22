@@ -6,7 +6,7 @@
 #	exit
 #fi
 
-if [ -z $timeout ]; then
+if [ -z "$timeout" ]; then
 	timeout='timeout'
 fi
 

@@ -46,12 +46,12 @@ gometalinter="$gml"
 for dir in $(find . -maxdepth 5 -type d -not -path './old/*' -not -path './old' -not -path './tmp/*' -not -path './tmp' -not -path './.*' -not -path './vendor/*' -not -path './bindata/*'-not -path ' ./examples/*' -not -path './test/*'); do
 	match="$dir/*.go"
 	#echo "match is: $match"
-	if ! ls $match &>/dev/null; then
+	if ! ls "$match" &>/dev/null; then
 		#echo "skipping: $match"
 		continue	# no *.go files found
 	fi
 
-	run-test $gometalinter "$dir" || fail_test "gometalinter did not pass"
+	run-test "$gometalinter" "$dir" || fail_test "gometalinter did not pass"
 done
 
 if [[ -n "$failures" ]]; then

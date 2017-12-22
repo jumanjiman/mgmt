@@ -38,7 +38,7 @@ function run_usergroup_test() {
 	setup
 
 	# run till completion
-	sudo -A timeout --kill-after=30s 25s ./mgmt run --yaml ./exec-usergroup/${graph} --converged-timeout=5 --no-watch --tmp-prefix &
+	sudo -A timeout --kill-after=30s 25s ./mgmt run --yaml ./exec-usergroup/"${graph}" --converged-timeout=5 --no-watch --tmp-prefix &
 	pid=$!
 	wait $pid	# get exit status
 	e=$?
@@ -50,14 +50,14 @@ function run_usergroup_test() {
 		exit 1
 	fi
 	if [ "${user}" != "" ]; then
-		test $(stat -c%U "${BASE_PATH_TEST}/result-exec-usergroup") = $user
+		test $(stat -c%U "${BASE_PATH_TEST}/result-exec-usergroup") = "$user"
 		if [ $? != 0 ]; then
 			echo "${BASE_PATH_TEST}result-exec-usergroup owner is not ${user}"
 			exit 1
 		fi
 	fi
 	if [ "${group}" != "" ]; then
-		test $(stat -c%G "${BASE_PATH_TEST}/result-exec-usergroup") = $group
+		test $(stat -c%G "${BASE_PATH_TEST}/result-exec-usergroup") = "$group"
 		if [ $? != 0 ]; then
 			echo "${BASE_PATH_TEST}result-exec-usergroup group is not ${group}"
 			exit 1
