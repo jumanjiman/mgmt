@@ -22,7 +22,7 @@ if [[ $# -gt 0 ]]; then
 fi
 
 # Never tag a dirty git tree.
-if [[ "${h}" =~ dirty ]]; then
+if is_git_dirty; then
 	echo "ERR: git tree is dirty. Commit or stash changes before tagging." >&2
 	exit 1
 fi

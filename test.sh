@@ -14,7 +14,7 @@ function run-test()
 }
 
 # ensure there is no trailing whitespace or other whitespace errors
-run-test git diff-tree --check $(git hash-object -t tree /dev/null) HEAD
+run-test ./test/test-git-tree.sh
 
 # ensure entries to authors file are sorted
 start=$(($(grep -n '^[[:space:]]*$' AUTHORS | awk -F ':' '{print $1}' | head -1) + 1))

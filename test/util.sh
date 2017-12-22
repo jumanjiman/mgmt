@@ -28,3 +28,7 @@ info() {
 warn() {
 	echo -e "[WARN] $*"
 }
+
+is_git_dirty() {
+	! [[ "$(git status 2>&1)" =~ working\ directory\ clean ]]
+}
