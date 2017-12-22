@@ -1,4 +1,6 @@
-#!/bin/bash -e
+#!/bin/bash
+set -eEu
+set -o pipefail
 
 # run empty graph, with prometheus support
 $timeout --kill-after=40s 35s ./mgmt run --tmp-prefix --prometheus --prometheus-listen :52637 &

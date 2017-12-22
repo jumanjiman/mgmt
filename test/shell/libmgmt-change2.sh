@@ -1,4 +1,6 @@
-#!/bin/bash -e
+#!/bin/bash
+set -eEu
+set -o pipefail
 
 go build -i -o libmgmt libmgmt-change2.go
 # this example should change graphs frequently, and then shutdown...

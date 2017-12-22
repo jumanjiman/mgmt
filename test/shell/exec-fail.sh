@@ -1,4 +1,6 @@
-#!/bin/bash -e
+#!/bin/bash
+set -eEu
+set -o pipefail
 
 # should take a few seconds plus converged timeout, and test we don't hang!
 # TODO: should we return a different exit code if the resources fail?

@@ -1,4 +1,6 @@
-#!/bin/bash -e
+#!/bin/bash
+set -eEu
+set -o pipefail
 
 # run a graph, with prometheus support
 timeout --kill-after=40s 35s ./mgmt run --tmp-prefix --no-pgp --prometheus --yaml prometheus-3.yaml &

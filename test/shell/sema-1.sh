@@ -1,4 +1,6 @@
-#!/bin/bash -e
+#!/bin/bash
+set -eEu
+set -o pipefail
 
 # should take at least 55s, but fail if we block this
 # TODO: it would be nice to make sure this test doesn't exit too early!

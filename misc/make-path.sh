@@ -1,5 +1,10 @@
 #!/bin/bash
+set -eEu
+set -o pipefail
+
+################################################################################
 # setup a few environment path values
+################################################################################
 
 if ! env | grep -q '^GOPATH='; then
 	export GOPATH="$HOME/gopath/"

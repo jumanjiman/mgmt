@@ -1,6 +1,12 @@
 #!/bin/bash
+set -eEu
+set -o pipefail
+
+################################################################################
 # hack around stupid $GOPATH semantics, with ~/bin/go helper
 # thanks to Nilium in #go-nuts for 1/3 of the idea
+################################################################################
+
 [ -z "$GOPATH" ] && echo '$GOPATH is not set!' && exit 1
 GO="$(which -a go | sed -e '2q;d')"	# TODO: pick /usr/bin/go in a better way
 if [ "$1" = "generate" ]; then

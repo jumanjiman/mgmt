@@ -1,5 +1,11 @@
-#!/usr/bin/env bash
+#!/bin/bash
+set -eEu
+set -o pipefail
+
+################################################################################
 # setup a simple go environment
+################################################################################
+
 XPWD=$(pwd)
 ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )"	# dir!
 cd "${ROOT}" >/dev/null

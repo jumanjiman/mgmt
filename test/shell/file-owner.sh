@@ -1,5 +1,6 @@
-#!/bin/bash -e
-# vim: noet:ts=8:sts=8:sw=8
+#!/bin/bash
+set -eEu
+set -o pipefail
 
 set -x
 

@@ -1,4 +1,6 @@
-#!/bin/bash -e
+#!/bin/bash
+set -eEu
+set -o pipefail
 
 # run empty graph
 $timeout --kill-after=45s 35s ./mgmt run --tmp-prefix --no-pgp &

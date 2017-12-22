@@ -1,7 +1,8 @@
 #!/bin/bash
+set -eEu
+set -o pipefail
 
 set -x
-set -o pipefail
 
 if ! timeout 1s sudo -A true; then
 	echo "sudo disabled: not checking exec user and group"

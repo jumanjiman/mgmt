@@ -1,4 +1,6 @@
-#!/bin/bash -e
+#!/bin/bash
+set -eEu
+set -o pipefail
 
 exit 0	# XXX: test temporarily disabled till etcd or mgmt regression is fixed.
 

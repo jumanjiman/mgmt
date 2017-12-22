@@ -1,5 +1,10 @@
 #!/bin/bash
+set -eEu
+set -o pipefail
+
+################################################################################
 # shitty cpu count control, useful for live demos
+################################################################################
 
 minimum=1	# don't decrease below this number of cpus
 maximum=8	# don't increase above this number of cpus

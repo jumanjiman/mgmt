@@ -1,4 +1,6 @@
-#!/bin/bash -e
+#!/bin/bash
+set -eEu
+set -o pipefail
 
 #if env | grep -q -e '^TRAVIS=true$'; then
 #	# inotify doesn't seem to work properly on travis

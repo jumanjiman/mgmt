@@ -1,4 +1,6 @@
-#!/bin/bash -e
+#!/bin/bash
+set -eEu
+set -o pipefail
 
 mkdir -p /tmp/mgmt/
 rm /tmp/mgmt/f1 || true

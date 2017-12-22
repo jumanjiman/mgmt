@@ -1,4 +1,6 @@
-#!/bin/bash -e
+#!/bin/bash
+set -eEu
+set -o pipefail
 
 # should take 15 seconds for longest resources plus startup time to shutdown
 # we don't want the ^C to allow the rest of the graph to continue executing!

@@ -8,6 +8,8 @@ set -o pipefail
 
 . test/util.sh
 
+opt="${1:-""}"
+
 info "running $0"
 
 failures=''
@@ -24,7 +26,7 @@ for pkg in $(go list ./... | grep -v "^${base}/vendor/" | grep -v "^${base}/exam
 	echo "Testing: $pkg"
 	# FIXME: can we capture and output the stderr from these tests too?
 	run-test go test "$pkg"
-	if [ "$1" = "--race" ]; then
+	if [ "$opt" = "--race" ]; then
 		run-test go test -race "$pkg"
 	fi
 done
