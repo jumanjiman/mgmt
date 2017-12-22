@@ -6,8 +6,7 @@ else
 	export timeout="timeout"
 fi
 
-fail_test()
-{
+fail_test() {
 	echo "FAIL: $@"
 	exit 1
 }
@@ -16,4 +15,16 @@ indent() {
 	while IFS='' read -r line; do
 		echo -e "\\t${line}"
 	done < <(echo "$*")
+}
+
+err() {
+	echo -e "[ERROR] $*"
+}
+
+info() {
+	echo -e "[INFO] $*"
+}
+
+warn() {
+	echo -e "[WARN] $*"
 }
