@@ -12,6 +12,9 @@ info running test.sh
 info "Environment variables:"
 indent "$(env)"
 
+# Abort if we don't have dependencies.
+test/check-dependencies.sh
+
 failures=''
 function run-test()
 {
