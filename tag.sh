@@ -12,8 +12,8 @@ set -o pipefail
 # v: the old tag version, such as 0.0.13
 # t: the new tag version, such as 0.0.14
 # h: the head version, such as 0.0.13-40-g62ca126-dirty
-v=`git describe --match '[0-9]*\.[0-9]*\.[0-9]*' --tags --abbrev=0`
-t=`echo "${v%.*}.$((${v##*.}+1))"`	# increment version
+v=$(git describe --match '[0-9]*\.[0-9]*\.[0-9]*' --tags --abbrev=0)
+t=$(echo "${v%.*}.$((${v##*.}+1))")
 h="$(git describe --tags --dirty --always)"
 
 if [[ $# -gt 0 ]]; then

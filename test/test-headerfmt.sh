@@ -9,7 +9,7 @@ FILE="${ROOT}/main.go"	# file headers should match main.go
 COUNT=0
 while IFS='' read -r line; do	# find what header should look like
 	echo "$line" | grep -q '^//' || break
-	COUNT=`expr $COUNT + 1`
+	COUNT=$(expr $COUNT + 1)
 done < "$FILE"
 cd "${ROOT}"
 

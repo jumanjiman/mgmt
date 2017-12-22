@@ -32,7 +32,7 @@ function token-coloncheck() {
 }
 
 # loop through directories in an attempt to scan each go package
-for dir in `find . -maxdepth 5 -type d -not -path './old/*' -not -path './old' -not -path './tmp/*' -not -path './tmp' -not -path './.*' -not -path './vendor/*'`; do
+for dir in $(find . -maxdepth 5 -type d -not -path './old/*' -not -path './old' -not -path './tmp/*' -not -path './tmp' -not -path './.*' -not -path './vendor/*'); do
 	match="$dir/*.go"
 	#echo "match is: $match"
 	if ! ls $match &>/dev/null; then
@@ -49,7 +49,7 @@ for dir in `find . -maxdepth 5 -type d -not -path './old/*' -not -path './old' -
 done
 
 # loop through individual *.go files
-for file in `find . -maxdepth 3 -type f -name '*.go' -not -path './old/*' -not -path './tmp/*'`; do
+for file in $(find . -maxdepth 3 -type f -name '*.go' -not -path './old/*' -not -path './tmp/*'); do
 	run-test grep 'log.' "$file" | grep '\\n"' && fail_test 'no newline needed in log.Printf()'	# no \n needed in log.Printf()
 	run-test simplify-gocase "$file"
 	run-test token-coloncheck "$file"

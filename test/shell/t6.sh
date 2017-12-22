@@ -22,7 +22,7 @@ sleep 0.1s
 test -e /tmp/mgmt/f2
 echo foo > /tmp/mgmt/f2
 sleep 0.1s
-test "`cat /tmp/mgmt/f2`" = "i am f2"
+test "$(cat /tmp/mgmt/f2)" = "i am f2"
 rm -f /tmp/mgmt/f2
 sleep 0.1s
 test -e /tmp/mgmt/f2

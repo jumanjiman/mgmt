@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # setup a simple go environment
-XPWD=`pwd`
+XPWD=$(pwd)
 ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )"	# dir!
 cd "${ROOT}" >/dev/null
 
@@ -11,11 +11,11 @@ fi
 
 sudo_command=$(which sudo)
 
-YUM=`which yum 2>/dev/null`
-DNF=`which dnf 2>/dev/null`
-APT=`which apt-get 2>/dev/null`
-BREW=`which brew 2>/dev/null`
-PACMAN=`which pacman 2>/dev/null`
+YUM=$(which yum 2>/dev/null)
+DNF=$(which dnf 2>/dev/null)
+APT=$(which apt-get 2>/dev/null)
+BREW=$(which brew 2>/dev/null)
+PACMAN=$(which pacman 2>/dev/null)
 
 # if DNF is available use it
 if [ -x "$DNF" ]; then

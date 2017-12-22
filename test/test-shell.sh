@@ -5,7 +5,7 @@
 . test/util.sh
 
 if [ "$1" == "--help" ] || [ "$1" == "-h" ]; then
-	echo -e "usage: ./"`basename $0`" [[--help] | <test>]"
+	echo -e "usage: ./"$(basename $0)" [[--help] | <test>]"
 	echo -e "where: <test> is empty to run all tests, or <file>.sh from shell/ dir"
 	exit 1
 fi
@@ -14,7 +14,7 @@ echo running test-shell.sh
 set -o errexit
 set -o pipefail
 
-LINE=$(printf '=%.0s' `seq -s ' ' $(tput cols)`)	# a terminal width string
+LINE=$(printf '=%.0s' $(seq -s ' ' $(tput cols)))	# a terminal width string
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )"	# dir!
 cd "$DIR" >/dev/null	# work from main mgmt directory
 make build
@@ -26,7 +26,7 @@ count=0
 # loop through tests
 for i in $DIR/test/shell/*.sh; do
 	[ -x "$i" ] || continue	# file must be executable
-	ii=`basename "$i"`	# short name
+	ii=$(basename "$i")	# short name
 	# if ARGV has test names, only execute those!
 	if [ "$1" != '' ]; then
 		[ "$ii" != "$1" ] && continue
@@ -35,7 +35,7 @@ for i in $DIR/test/shell/*.sh; do
 	mkdir -p '/tmp/mgmt/'	# directory for mgmt to put files in
 	#echo "Running: $ii"
 	export MGMT_TMPDIR='/tmp/mgmt/'	# we can add to env like this
-	count=`expr $count + 1`
+	count=$(expr $count + 1)
 	set +o errexit	# don't kill script on test failure
 	out=$($i 2>&1)	# run and capture stdout & stderr
 	e=$?	# save exit code

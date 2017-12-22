@@ -36,8 +36,8 @@ str=''
 tnuoc=$((maximum-count))	# backwards count
 count2=$((count * factor))
 tnuoc2=$((tnuoc * factor))
-left=`yes '>' | head -$count2 | paste -s -d '' -`
-right=`yes ' ' | head -$tnuoc2 | paste -s -d '' -`
+left=$(yes '>' | head -$count2 | paste -s -d '' -)
+right=$(yes ' ' | head -$tnuoc2 | paste -s -d '' -)
 str="${left}${right}"
 _min=$((minimum-1))
 _max=$((maximum+1))
@@ -72,8 +72,8 @@ while true; do
 	#echo "tnuoc is: $tnuoc"
 	count2=$((count * factor))
 	tnuoc2=$((tnuoc * factor))
-	left=`yes '>' | head -$count2 | paste -s -d '' -`
-	right=`yes ' ' | head -$tnuoc2 | paste -s -d '' -`
+	left=$(yes '>' | head -$count2 | paste -s -d '' -)
+	right=$(yes ' ' | head -$tnuoc2 | paste -s -d '' -)
 	str="${left}${right}"
 	#echo "str is: $str"
 	echo -ne '\r'	# backup

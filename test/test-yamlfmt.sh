@@ -17,7 +17,7 @@ set -o pipefail
 
 ROOT=$(dirname "${BASH_SOURCE}")/..
 
-RUBY=`which ruby 2>/dev/null`
+RUBY=$(which ruby 2>/dev/null)
 if [ -z $RUBY ]; then
 	fail_test "The 'ruby' utility can't be found."
 fi
@@ -30,12 +30,12 @@ if $RUBY -e "puts RUBY_VERSION" | grep -q ^1 ; then
 fi
 
 # eg: 2.3.3p222 -> 2.3.3
-version="`$RUBY --version | cut -f2 -d' ' | cut -f1 -d'p'`"
-major="`echo $version | cut -f1 -d'.'`"
-minor="`echo $version | cut -f2 -d'.'`"
-point="`echo $version | cut -f3 -d'.'`"
+version="$($RUBY --version | cut -f2 -d' ' | cut -f1 -d'p')"
+major="$(echo $version | cut -f1 -d'.')"
+minor="$(echo $version | cut -f2 -d'.')"
+point="$(echo $version | cut -f3 -d'.')"
 
-echo "Found Ruby version: `$RUBY --version`"
+echo "Found Ruby version: $($RUBY --version)"
 if [ "$major" -lt 2 ]; then
 	echo "Skipping yamlfmt - cannot test YAML formatting with Ruby < 2.x"
 	exit 0
