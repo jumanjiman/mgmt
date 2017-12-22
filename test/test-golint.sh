@@ -3,7 +3,8 @@
 
 . test/util.sh
 
-echo running test-golint.sh
+info "running $0"
+
 # TODO: replace with gometalinter instead of plain golint
 # TODO: output a diff of what has changed in the golint output
 # FIXME: test a range of commits, since only the last patch is checked here

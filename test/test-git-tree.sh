@@ -8,6 +8,8 @@ set -o pipefail
 
 . test/util.sh
 
+info "running $0"
+
 declare -i RC=0
 declare output
 

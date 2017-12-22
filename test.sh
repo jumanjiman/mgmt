@@ -3,8 +3,8 @@
 
 . test/util.sh
 
-echo running test.sh
-echo "Environment variables:"
+info running test.sh
+info "Environment variables:"
 indent "$(env)"
 
 failures=''

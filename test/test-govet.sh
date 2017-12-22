@@ -3,7 +3,7 @@
 
 . test/util.sh
 
-echo running test-govet.sh
+info "running $0"
 
 failures=''
 function run-test()

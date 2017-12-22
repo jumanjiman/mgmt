@@ -4,7 +4,7 @@
 
 . test/util.sh
 
-echo running test-gometalinter.sh
+info "running $0"
 
 failures=''
 function run-test()

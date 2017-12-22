@@ -4,7 +4,8 @@
 
 . test/util.sh
 
-echo running test-bashfmt.sh
+info "running $0"
+
 set -o errexit
 set -o nounset
 set -o pipefail

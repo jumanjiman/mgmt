@@ -5,7 +5,8 @@ exit 0	# i give up, we're skipping this entirely, help wanted to fix this
 
 . test/util.sh
 
-echo running test-yamlfmt.sh
+info "running $0"
+
 set -o errexit
 set -o nounset
 set -o pipefail

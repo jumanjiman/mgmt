@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-echo running test-commit-message.sh
+info "running $0"
 
 travis_regex='^\([a-z0-9]\(\(, \)\|[a-z0-9]\)\+[a-z0-9]: \)\+[A-Z0-9][^:]\+[^:.]$'
 

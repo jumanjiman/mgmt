@@ -4,13 +4,14 @@
 
 . test/util.sh
 
+info "running $0"
+
 if [ "$1" == "--help" ] || [ "$1" == "-h" ]; then
 	echo -e "usage: ./"$(basename "$0")" [[--help] | <test>]"
 	echo -e "where: <test> is empty to run all tests, or <file>.sh from shell/ dir"
 	exit 1
 fi
 
-echo running test-shell.sh
 set -o errexit
 set -o pipefail
 

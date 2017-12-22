@@ -3,7 +3,8 @@
 
 . test/util.sh
 
-echo running test-headerfmt.sh
+info "running $0"
+
 ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )"	# dir!
 FILE="${ROOT}/main.go"	# file headers should match main.go
 COUNT=0

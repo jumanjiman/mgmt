@@ -2,7 +2,7 @@
 
 . test/util.sh
 
-echo "running test-gotest.sh $1"
+info "running $0 $1"
 
 failures=''
 function run-test()
